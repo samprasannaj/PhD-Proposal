@@ -1,0 +1,304 @@
+%\documentclass[12 pt]{extarticle}
+\documentclass[12pt]{article}
+\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage[numbers]{natbib}
+\usepackage{arev}
+\usepackage{indentfirst}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\graphicspath{ {/images/} }
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\usepackage{pgfgantt}
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+% used in maketitle
+\title{Design and development of an affordable smartphone based telerehabilitation system to improve grip strength among Brain Injured Individuals}
+\author{Sam James}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% documentation: http://mirrors.ctan.org/macros/latex/contrib/sagetex/sagetexpackage.pdf
+% \usepackage{sagetex}
+
+\begin{document}
+\maketitle
+%\doublespacing
+\section {Problem Statement}
+%Issues: Need to increase muscle strength →  Home Exercise Program prescribed → Exercises are repetitive and boring → Non compliance → Poor strength → Unable to perform ADLs and functional activities → Decreased functionality → Increased hospitalization → Increased morbidity and mortality.
+
+Mobility is the basis of human existence - walking, eating, breathing etc. Muscles cause this mobility. A muscle or muscle group  contract and relax in coordination to form a movement. Muscles generally contract in varying degrees of tension/force. This force of muscle contraction is termed as muscle strength.  A minimal amount of muscle strength is required to perform the activities of daily living (ADL), work and leisure tasks efficiently. Reduced muscle strength interferes with participation these tasks  and daily activities.  Muscle strength is generally affected in aging and other medical conditions like stroke, neuropathies and several other neuromuscular diseases. 
+\medskip
+
+Studies show exercises significantly increase muscle strength to optimal levels which enables people to perform work and ADL tasks. Therapeutic exercises usually performed at clinical settings such as hospitals, rehabilitation facilities, and outpatients clinics. Once patients are medically stable they will be discharged from these places and sent to home with Home Exercise Programs (HEPs) to continue their exercise regimen. Good compliance to these programs are very important to have overall treatment outcomes like improved muscle strength, efficient participation in daily living tasks, reduced morbidity and  mortality. But, research data show that 50\% to 70\% patients are non-compliant with these HEPs \cite{bgwag13} which increases their morbidity and mortality rates, return to hospitals, poor participation in daily living and poor quality of life. 
+\medskip
+
+This poor compliance is due to various factors like decreased motivation, ignorance, laziness etc.  In addition to that, there are several other practical issues that limit adherence to these programs such as boring monotonous movements, no supervision and feedback, no tracking of progress and  no modification or grading of the HEPs. This leads to numerous complications like poor participation in daily living tasks which leads to limited mobility and functioning. This further progresses to increased levels of morbidity and mortality rates.
+
+\section {Background and Significance}
+%Stroke --> UE weakness --> Grip strength issues --> ADL functions --> 
+\subsection{Impact of Stroke on muscle strength}
+It is unfortunate that people suffer from cerebrovascular accident/stroke which affects their daily lives in many dimensions. They lose their functional abilities like getting out of bed, taking bath or shower, using the toilet, dressing, preparing meals, and eat. The primary reason is the brain loses control of muscles, so people lose muscle tone and strength. Upper extremity weakness results in about 70\% of the stroke survivors \cite{rand2015predicting}. The maximal voluntary contraction force of the muscle  is significantly reduced after a brain injury and up to 40\% of the survivors never regain functional use of the upper limb to perform the daily activities \cite{harris2010strength}. There is a strong positive correlation (r=0.69) that exists between grip strength and the ability to perform the activities of daily living (ADLs) \cite{harris2007paretic}.  
+\medskip
+
+\subsection{The Inpatient Rehab Facilities}
+Inpatient rehab facilities (IRFs) in acute care hospitals, as a rule of thumb, focus on the gross motor and  functional mobility skills such as bed-mobility skills, trunk control, pre-gait skills and transfers which enable patients to ambulate \cite{horn2005stroke}. This hustles the discharge process and reduces the length of stay at the hospital, which in turn decrease the costs of inpatient stay. And, on the other hand, IRFs usually give least input to hand functions such as fine motor skills  and grip strength, because it takes significantly longer time to recover than lower extremity motor function and gait \cite{lee2015six}. \citeauthor{rand2015predicting}'s study suggested that grip strength improves up to 64\% one year post stroke. 
+\medskip
+
+\subsection{The Third Party Payers}
+The third party payers such as Medicare, Medicaid and other insurance companies require rehabilitation therapist to have direct contact with patients for therapy to make payments \cite{mccarty2002telehealth} and they usually don't cover inpatient rehab stays just for improvement of hand function skills. Due to this cost constraint, direct contact therapy visits are often limited and home based exercise programs are prescribed. The patients, however, can do the exercises without help from a therapist. It may be hard for them to comply with home exercise program for various reasons such as inability to perform individual movements, to acquire appropriate feedback, poor pain tolerance, etc,. Compliance with home exercise program ranges from 30 to 57\%, and the rate drops as time passes by \cite{sluijs1991patient}. %Also, evidence says that, supervised therapy sessions significantly improve outcomes when compared with simple home exercise program with no supervision \cite{grgpg17}. 	
+\medskip
+
+\subsection{Home Therapy with Supervision}
+ Patients who received therapy in their home took greater initiative in setting goals and achieving them versus patient who received therapy in hospitals \citet{koch1998rehabilitation}. A study by \citeauthor{holmqvist1998randomized} shows positive effect for those treated in the home in levels of social activity, activities of daily living, motor capacity, manual dexterity, and walking. Significant differences were also noted in rate of readmission and patient satisfaction in favor of the home treatment group.  \citet{legg2004rehabilitation} concluded a systematic review of randomized clinical trials of rehabilitation provided at home, that therapy at home resulted in improved ability to undertake personal activities of daily living and reduce risk of deterioration in ability. In-home treatment was found to reduce the incidence of delirium, the duration of rehabilitation, and costs in a frail elderly population \cite{caplan2005does}.
+ 
+ \subsection{Telerehabilitation}
+Telerehabilitation is a method by which a person can interact with a therapist   located at a remote location. This is very useful when a person with disabilities have difficulty traveling to clinics to receive therapy services. With the development advance telecommunication technologies, individuals can obtain therapy services without the limitations of distance.  A Telerehabilitation system usually requires a computer with internet connection and a device to interact with, a smart phone/tablet can also be used. \citet{proffitt2015feasibility} did a 6 week  feasibility study, concluded that an in home virtual reality game based telerehabilitation for chronic stroke survivors is practically feasible, which improved their participation and they had a moderately high enjoyment while playing the games.
+
+ 
+\section {Aims and Objectives}
+ \paragraph{Aim:}
+ To design and develop a smartphone based telerehabilitation device capable of improving grip strength in order to improve hand functions among persons with brain injured individuals, and  increased compliance with Home Exercise Programs.
+ 
+ \subparagraph{Hypothesis 1:}
+ \textit {\textbf{The newly designed telerehabilitation device will improve grip strength in patients}} 
+ 
+ \subparagraph{Hypothesis 2:}
+ \textit{\textbf{The newly designed telerehabilitation will improve patient's participation and compliance in home exercise programs.}} 
+ 
+ 
+ The outcome of this aim is to achieve an increase in the subject's grip strength. Grip strength will be measured before and after intervention. A standard hand dynamometer will be used to measure the grip strength for all participants. Participants will be either seated on a chair or at the edge of bed, with shoulder in neutral/slightly flexed, elbow in 90 deg flexion, forearm in mid-prone and hand in neutral position. Participant will hold the dynamometer's both handles and will squeeze after the experimenter instructs to do so.  Participants will be allowed to do a couple of trials which will not be recorded for the experiment. Each participant will asked to do 3 trials on both hands.
+ 
+ To test our hypothesis we will do a comparative experiment. Our subjects will be selected from a local hospital who have deficits in hand grip strength. Patients will be randomly allocated to experimental and control groups. The intervention group will use the newly designed smartphone telerehabilitation device and the control group with do the traditional home exercise program prescribed by a licensed therapist. We will measure our subjects' participation by measuring the duration and number of sessions. The intervention group will be tracked electronically through our administrator dashboard. The control group will be given a paper based tracking grid in which they will record the duration and number of sessions. 
+ 
+
+\paragraph{Objective 1:- To design and develop a smart phone based telerehabilitation system } 
+
+We propose that the outcome of this objective will be an affordable smartphone based telerehabilitation system (system) which will include a newly designed device (device) and a smart phone application (app) to use  with.  Patients can use this system virtually anywhere like their home, assisted living, independent living facilities, coffee shop, library etc., far away from the clinical area. There is sufficient evidence to prove that in-home telerehabilitation is an effective alternative to face-to-face rehabilitation (Moffet et al., 2015). The proposed system will solve the problems related to the  home exercise program compliance. The system will aim at patients who have decreased hand grip and pinch strength, to challenge their impairment through the use of video games. The game will be individualized for all patients by their therapists according to their weakness.  The game will also provide incentives for completion of therapy. Video game based rehabilitation is always fun and motivates patients to engage in the exercise protocol (Lange et al., 2012). A 2015 study reports that nearly two thirds of Americans use smart phone (Pew Research Center, 2015). Combining all these facts together, we devise that this system can engage patients through video games using a specially designed sensor based exercisers as game controllers. 
+
+We will design an administrator dashboard for therapists to monitor patients' progress. Using this dashboard therapist can modify game parameters to alter the exercise regimen. This dashboard will collect and update the data  in real time from the newly developed device as the patients is using the device. The therapist can track the patient's progress in terms of muscle strength, endurance and the usage time. They also can track  the compliance with the prescribed home exercise program.  
+
+\paragraph{Objective 2:- To measure the usability of the system}~\\
+
+\paragraph{Objective 3:- To test the validity and reliability of the device}~\\
+
+\paragraph{Objective 4:- To conduct a pilot clinical trial of device.}~\\
+
+
+\section{Research Methodology}
+ We will be  doing a preliminary study to evaluate feasibility of the device design and its effectiveness among the patients with poor grip strength, so we will be using a Pilot Experimental Study Design.
+\subsection{Device Design}
+\paragraph{Hardware:} 
+\begin{itemize}
+	\item Hand Dynamometer
+	\item Arduino Uno R3 - micro controller board
+	\item HX711  - 24 bit ADC 
+	\item HC05 Bluetooth module for Arduino 
+\end{itemize}
+We will be using a commercially available hand dynamometer (figure \ref{fig:dynamo-02}). This dynamometer is having a 100 Kg capacity load cell. To access the output from the load cell, we will design a breakout box . The output from the load cell is amplified using HX711, a weighing scale /instrumentation amplifier. The Digital Output and clock pins from HX711 will be connected to D3 and D4 pins of Arduino. The Arduino sends the amplified signal to the Android phone through the Bluetooth module. 
+\paragraph{Software:}
+ \subparagraph{Firmware:}
+The firmware for Arduino microcontroller has 2 purposes and it will be written in C language. 
+One is to receive the load cell data from the hand dynamometer. The load cell will be connected to the digital PWM inputs microcontroller board. The input data is  fed into the pins 3 and 4. 
+ The other is to send the received data to the phone over bluetooth communication module. Arduino microcontroller doesn't have a  bluetooth feature, so a separate bluetooth module HC-05  is required to send data from Arduino board.
+
+ 
+ \subparagraph{Game Development:}
+ We will code in Javascript  language to build the game. We will be using Phaser, a Javascript framework, to build games. This will a simple two dimensional game, with one level of control like moving the object / character up or down. The load cell data will be translated to control the game character to move up. When the subject squeezes the load cell, game character will move up. The gravity feature in the game will move the character down. The goal of the game is to travel through obstructions.  
+ 
+ \subparagraph{App Development:}
+ Apache Cordova is used for building the smart phone app.  For simplicity purposes, we will be using Android phone as our smartphone device to implement our design. Since Apple has a complicated process to get the application in the Apple's app store. 
+ 
+\begin{figure}
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.6\textwidth]{images/dynamo-02.jpg}
+\caption{A  commercially available hand dynamometer}
+\label{fig:dynamo-02}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[width=0.2\textheight]{images/loadcell.jpg}
+\caption{A load cell}
+\label{fig:loadcell}
+\end{subfigure}
+\caption{}
+%\label{fig:fig1}
+\end{figure}
+
+ 	
+ 	\begin{figure}
+ 		\centering
+ 		\includegraphics[width=0.6\textwidth]{images/circuit.jpg}
+ 		\caption{Circuit}
+ 		\label{fig:circuit}
+ 	\end{figure}
+
+\subsection{Experiment:}
+IRB approval and necessary permission from the local hospital will be obtained before starting the experiment with subjects.
+\paragraph{Subjects:} 10 patients with poor grip strength will be selected from a local hospital.  5 of them will be randomly allocated to the experimental group and the other 5 patients to the control group. 
+\paragraph{Data Collection and Analysis:} 
+All the subjects will be evaluated by a licensed occupational therapist. The baseline hand grip strength values will be obtained using Jamar Dynamometer in the standard position explained by American Society of Hand Therapists. The experimental group will use our newly designed device. The therapist will educate experimental group with how to use the new device. Standardized home exercise program sheets to increase grip strength will be provided to the control group. The experimental group will be monitored at regular intervals and necessary feedback and gradations to the exercise program by the therapist from a remote monitoring system. 
+The subjects will be reevaluated at 4 weeks using the Jamar dynamometer. 
+
+\section{Project Time line:}
+\begin{itemize}
+\item Device design -  month 1 
+\item Software design - month 2 
+\item Device testing -  month 2 
+\item Experimental Data collection  - month 3-6 
+\item Data Analysis - month - 6 - 7 
+\item Thesis - month 2 - 8 
+\item Publication - month 5 
+\end{itemize}
+
+%\definecolor{barblue}{RGB}{153,204,254}
+%\definecolor{groupblue}{RGB}{51,102,254}
+%\definecolor{linkred}{RGB}{165,0,33}
+%\renewcommand\sfdefault{phv}
+%\renewcommand\mddefault{mc}
+%\renewcommand\bfdefault{bc}
+%\setganttlinklabel{s-s}{START-TO-START}
+%\setganttlinklabel{f-s}{FINISH-TO-START}
+%\setganttlinklabel{f-f}{FINISH-TO-FINISH}
+%\sffamily
+%\begin{ganttchart}[
+%	canvas/.append style={fill=none, draw=black!5, line width=.75pt},
+%	hgrid style/.style={draw=black!5, line width=.75pt},
+%	vgrid={*1{draw=black!5, line width=.75pt}},
+%	today=7,
+%	today rule/.style={
+%		draw=black!64,
+%		dash pattern=on 3.5pt off 4.5pt,
+%		line width=1.5pt
+%	},
+%	today label font=\small\bfseries,
+%	title/.style={draw=none, fill=none},
+%	title label font=\bfseries\footnotesize,
+%	title label node/.append style={below=7pt},
+%	include title in canvas=false,
+%	bar label font=\mdseries\small\color{black!70},
+%	bar label node/.append style={left=2cm},
+%	bar/.append style={draw=none, fill=black!63},
+%	bar incomplete/.append style={fill=barblue},
+%	bar progress label font=\mdseries\footnotesize\color{black!70},
+%	group incomplete/.append style={fill=groupblue},
+%	group left shift=0,
+%	group right shift=0,
+%	group height=.5,
+%	group peaks tip position=0,
+%	group label node/.append style={left=.6cm},
+%	group progress label font=\bfseries\small,
+%	link/.style={-latex, line width=1.5pt, linkred},
+%	link label font=\scriptsize\bfseries,
+%	link label node/.append style={below left=-2pt and 0pt}
+%	]{1}{13}
+%	\gantttitle[
+%	title label node/.append style={below left=7pt and -3pt}
+%	]{MONTHS:\quad1}{1}
+%	\gantttitlelist{2,...,13}{1} \\
+%	\ganttgroup[progress=57]{WBS 1 Summary Element 1}{1}{10} \\
+%	\ganttbar[
+%	progress=75,
+%	name=WBS1A
+%	]{\textbf{WBS 1.1} Activity A}{1}{8} \\
+%	\ganttbar[
+%	progress=67,
+%	name=WBS1B
+%	]{\textbf{WBS 1.2} Activity B}{1}{3} \\
+%	\ganttbar[
+%	progress=50,
+%	name=WBS1C
+%	]{\textbf{WBS 1.3} Activity C}{4}{10} \\
+%	\ganttbar[
+%	progress=0,
+%	name=WBS1D
+%	]{\textbf{WBS 1.4} Activity D}{4}{10} \\[grid]
+%	\ganttgroup[progress=0]{WBS 2 Summary Element 2}{4}{10} \\
+%	\ganttbar[progress=0]{\textbf{WBS 2.1} Activity E}{4}{5} \\
+%	\ganttbar[progress=0]{\textbf{WBS 2.2} Activity F}{6}{8} \\
+%	\ganttbar[progress=0]{\textbf{WBS 2.3} Activity G}{9}{10}
+%	\ganttlink[link type=s-s]{WBS1A}{WBS1B}
+%	\ganttlink[link type=f-s]{WBS1B}{WBS1C}
+%	\ganttlink[
+%	link type=f-f,
+%	link label node/.append style=left
+%	]{WBS1C}{WBS1D}
+%\end{ganttchart}
+
+
+
+%Hand Dynamometer - breakout \\
+%Incorporate sensor and bluetooth module \\
+%Software \\
+%Firmware to receive data (Arduino C program) \\
+%Game Program in JavaScript \\
+%Use Sensor data to manipulate game characters to play the game \\
+%Central station design for monitoring sessions and data collection to provide feedback. \\
+%Remote data collection through web server \\
+%Therapist readable data and alter parameters \\
+
+%
+%Hypothesis: 
+%Specific aims:
+%
+%Design and develop the prototype device for smartphone based telerehabilitation system.
+%Pilot testing of the prototype device.
+%Simulation study to show 
+%Background and Significance:
+%Importance of exercises and QoL, ADL, Functionality
+%Home exercise prescription
+%Device Design:
+%The devised system should have the following characteristics:-
+%
+%Goal oriented.
+%Game Based
+%Feedback from therapists
+%Data collection to reflect participation and progress
+%%Monitoring Vitals → Safe Zone Participation -- future
+%%
+%To establish a proof of concept in this study,  we will be focusing only a single area to work that is grip strength. There are several reasons why grip strength is used in this study. Grip strength is a common indicator for general muscle strength \cite{tfjhp12}. Grip strength can be measured easily and quantitatively using Hand Dynamometer. There is a vast amount of research done many counties to establish normative data for grip strength \cite{adwhsg10}, \cite{bkop97}, \cite{hr02}, \cite{mkvwdr85}, \cite{pvvbvmf11}, \cite{sb14}, \cite{ycl03}. Also there is data available for grip strength among disease conditions like Arthritis \cite{cg07}, carpal tunnel syndrome\cite{bmdg13}, stroke \cite{stbh89}, dementia \cite{skksy12}, etc.
+%	A force sensor or load cell will be attached to the gripping device / manual dynamometer to measure the force. This force data can be remotely logged through low powered bluetooth devices to the smart phone. The force data can be used as the independent variable to control the game. Additional variable like accelerometer can be added for increased interaction.
+%
+%
+%	
+%
+%This is a low cost commercially available hand dynamometer, the force is measured with the load cell.The load cell measures up to 90Kg / 200 lbs with 0.2 lbs / 100 grams accuracy. The load cell can be connected to ESP32/WROOM (rectangle) or PUCK.JS (circle) microcontroller boards. 
+%
+%
+%
+%Both of the above development boards has the low energy bluetooth feature which can transmit the load cell values to the smart phone device. These values can be used as the game variable to control the video game in the smartphone. 
+%
+%The smartphone app can transmit the app wirelessly to the remote rehab central monitor/server where the therapist can read the variables into meaningful data from the patient. This will enable the therapist to provide some feedback to the patients or change the game variable - like altering the threshold either higher or lower to grade the exercise. 
+%
+%Game based rehabilitation in smart phone / Tablets / Computer
+%Exercise devices to play games which wireless in nature
+%Remote data logging and monitoring of exercise progress and modification of HEP
+
+
+
+\bibliographystyle{humannat}
+\bibliography{reference}
+
+\end{document}
