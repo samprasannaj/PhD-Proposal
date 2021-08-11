@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "SensorCode",
+			"path": "..\\..\\Hardware\\SensorCode"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
